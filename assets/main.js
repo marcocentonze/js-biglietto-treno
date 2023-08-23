@@ -22,7 +22,7 @@ const etaPasseggero = Number(prompt('Quanti anni ha il passeggero?'));
 console.log(etaPasseggero);
 
 // calcola il prezzo del biglietto in base ai chilometri (0.21 € al km)
-const prezzoAlKm = 0.21; //to do: controllare se si può scrivere così
+const prezzoAlKm = 0.21; 
 
 const prezzoBiglietto = numeroKm * prezzoAlKm;
 
@@ -38,21 +38,24 @@ if (etaPasseggero < 18) {
 
     let prezzoFinaleMinorenni = prezzoBiglietto - prezzoScontatoMinorenni;
 
-    console.log('Il tuo prezzo scontato è di ' + prezzoFinaleMinorenni + '€');
+    console.log('Il tuo prezzo scontato è di ' + prezzoFinaleMinorenni.toFixed(2) + '€');
+    
+    //scrivere output in pagina
+    document.getElementById("costo_ticket").innerHTML = (('Il tuo prezzo scontato è di ') + prezzoFinaleMinorenni.toFixed(2) + ('€')) ;
 
 } else if (etaPasseggero >65) {
   
     let prezzoFinaleAnziani = prezzoBiglietto - prezzoScontatoAnziani;
 
-    console.log('Il tuo prezzo scontato è di ' + prezzoFinaleAnziani + '€');
+    console.log('Il tuo prezzo scontato è di ' + prezzoFinaleAnziani.toFixed(2) + '€');
+
+     //scrivere output in pagina
+    document.getElementById("costo_ticket").innerHTML = (('Il tuo prezzo scontato è di ') + prezzoFinaleAnziani.toFixed(2) + ('€')) ;
 
 } else {
-    console.log('Il tuo prezzo è di ' + prezzoBiglietto);
+    console.log('Il tuo prezzo è di ' + prezzoBiglietto.toFixed(2));
+
+     //scrivere output in pagina
+    document.getElementById("costo_ticket").innerHTML = (('Il tuo prezzo è di ') + prezzoBiglietto.toFixed(2) + ('€')) ;
 }
 
-
-
-
-
-
-//stampa dell'output
