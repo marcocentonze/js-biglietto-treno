@@ -13,49 +13,28 @@ L'output del prezzo finale va stampato in forma umana (ovvero con massimo due de
 -consolelog
 */
 
-//chiedere all'utente il numero dei chilometri da percorrere
+// Chiedere all'utente il numero dei chilometri da percorrere
 const numeroKm = Number(prompt('Quanti chilometri vuoi percorrere?'));
-console.log(numeroKm);
-
-//chiedere all'utente l'età del passeggero
 const etaPasseggero = Number(prompt('Quanti anni ha il passeggero?'));
-console.log(etaPasseggero);
 
-// calcola il prezzo del biglietto in base ai chilometri (0.21 € al km)
-const prezzoAlKm = 0.21; 
+// Calcola il prezzo del biglietto in base ai chilometri (0.21 € al km)
+const prezzoAlKm = 0.21;
+let prezzoIntero = numeroKm * prezzoAlKm;
+let prezzoScontato = 0;
 
-const prezzoBiglietto = numeroKm * prezzoAlKm;
-
-console.log(prezzoBiglietto + '€');
-
-//applica gli sconti in base all'età
-let prezzoScontatoMinorenni = prezzoBiglietto * 0.2;
-let prezzoScontatoAnziani = prezzoBiglietto * 0.4;
-
-
-
+// Applica gli sconti in base all'età
 if (etaPasseggero < 18) {
-
-    let prezzoFinaleMinorenni = prezzoBiglietto - prezzoScontatoMinorenni;
-
-    console.log('Il tuo prezzo scontato è di ' + prezzoFinaleMinorenni.toFixed(2) + '€');
-    
-    //scrivere output in pagina
-    document.getElementById("costo_ticket").innerHTML = (('Il tuo prezzo scontato è di ') + prezzoFinaleMinorenni.toFixed(2) + ('€')) ;
-
-} else if (etaPasseggero >65) {
-  
-    let prezzoFinaleAnziani = prezzoBiglietto - prezzoScontatoAnziani;
-
-    console.log('Il tuo prezzo scontato è di ' + prezzoFinaleAnziani.toFixed(2) + '€');
-
-     //scrivere output in pagina
-    document.getElementById("costo_ticket").innerHTML = (('Il tuo prezzo scontato è di ') + prezzoFinaleAnziani.toFixed(2) + ('€')) ;
-
-} else {
-    console.log('Il tuo prezzo è di ' + prezzoBiglietto.toFixed(2));
-
-     //scrivere output in pagina
-    document.getElementById("costo_ticket").innerHTML = (('Il tuo prezzo è di ') + prezzoBiglietto.toFixed(2) + ('€')) ;
+    prezzoScontato = prezzoIntero * 0.2;
+} else if (etaPasseggero > 65) {
+    prezzoScontato = prezzoIntero * 0.4;
 }
+
+// Calcola il prezzo finale
+let prezzoFinale = prezzoIntero - prezzoScontato;
+
+// Stampa il prezzo finale in console 
+console.log('Il tuo prezzo è di ' + prezzoFinale.toFixed(2) + '€');
+
+// Scrivere l'output in pagina 
+document.getElementById("costo_ticket").innerHTML = 'Il tuo prezzo è di ' + prezzoFinale.toFixed(2) + '€';
 
